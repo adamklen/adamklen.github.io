@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="page">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Adam Klen</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body ng-controller="TabController as tabCtrl">
+<div id="header">
+    <ul class="tabbar">
+        <li>
+          <a href ng-click="tabCtrl.selectTab(1)" ng-class="{ selected:tabCtrl.isSelected(1) }">About Me</a>
+        </li>
+        <li>
+          <a href ng-click="tabCtrl.selectTab(2)" ng-class="{ selected:tabCtrl.isSelected(2) }">Projects</a>
+        </li>
+        <li>
+          <a href ng-click="tabCtrl.selectTab(3)" ng-class="{ selected:tabCtrl.isSelected(3) }">Contact</a>
+        </li>
+      </ul>
+  </div>
+
+  <div class="background-image"></div>
+  <div ng-if="tabCtrl.isSelected(0)" class="title" ng-controller="SocialController as socialCtrl">
+    <div class="name">adam klen</div>
+    <div class="email">adam@klen.xyz</div>
+    <div class="social">
+      <a ng-repeat="medium in socialCtrl.socialMedia" ng-href={{medium.url}} target="_blank">
+        <img ng-src="{{medium.icon}}" height="60" width="60"/>
+      </a>
+    </div>
+  </div>
+
+  <div class="content" ng-cloak ng-if="!tabCtrl.isSelected(0)">
+      <div ng-if="tabCtrl.isSelected(1)" class="container">
+        <div ng-include="'about/about.html'"></div>
+      </div>
+      <div ng-if="tabCtrl.isSelected(2)" ng-include="'projects/projects.html'"></div>
+      <div ng-if="tabCtrl.isSelected(3)" ng-include="'contact/contact.html'"></div>
+  </div>
+
+  <div id="footer">
+    <ul class="infobar" ng-if="!tabCtrl.isSelected(0)" ng-cloak>
+      <li ng-controller="SocialController as socialCtrl">
+        <span class="social">
+          <a ng-repeat="medium in socialCtrl.socialMedia" ng-href={{medium.url}} target="_blank">
+            <img ng-src={{medium.icon}} alt={{medium.name}} height="60" width="60"/>
+          </a>
+        </span>
+      </li>
+      <li>
+        <span class="subemail">adam@klen.xyz</span>
+      </li>
+      <li>
+        <span class="subname">adam klen</span>
+      </li>
+    </ul>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-route.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-animate.js"></script>
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="app.js"></script>
+  <script src="about/about.js"></script>
+  <script src="projects/projects.js"></script>
+  <script src="contact/contact.js"></script>
+</body>
+</html>

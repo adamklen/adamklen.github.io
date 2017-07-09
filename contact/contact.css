@@ -1,0 +1,32 @@
+
+label {
+    margin-top: 1em;
+    color: #dddddd;
+}
+form {
+    margin-top: 2em;
+    margin-left: 4em;
+    padding-bottom: 8em;
+}
+
+input,
+textarea {
+    display: block;
+    margin: 0 0 0.5em 1em;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #dddddd;
+    border: solid thin grey;
+}
+
+textarea {
+    min-width: 50em;
+    max-width: 70em;
+    min-height: 6em;
+    max-height: 15em;
+}
+
+#submit {
+    margin-top: 2em;
+    width: 5em;
+    height: 3em;
+}

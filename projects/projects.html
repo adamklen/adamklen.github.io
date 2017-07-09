@@ -1,0 +1,19 @@
+<link rel="stylesheet" type="text/css" href="projects/projects.css">
+
+<div class="container project-container" ng-controller="ProjectController as projectCtrl">
+  <div ng-if="!projectCtrl.isSelected()" class="col-md-3 col-sm-4 col-xs-6 project-thumbnail-wrapper" ng-repeat="project in projectCtrl.projects">
+    <div class="project-thumbnail">
+      <a href ng-click="projectCtrl.select($index)">
+        <img ng-src="assets/thumbnails/{{project.id}}.jpg">
+      </a>
+      <h4>{{project.title}}</h4>
+    </div>
+  </div>
+
+  <div class="project-view" ng-if="projectCtrl.isSelected()">
+    <div class="project-body" ng-include="'projects/' + projectCtrl.projects[projectCtrl.selected].id + '.html'"></div>
+    <a class="exit" href ng-click="projectCtrl.select(projectCtrl.unset)">
+      <img src="assets/exit.png">
+    </a>
+  </div>
+</div>

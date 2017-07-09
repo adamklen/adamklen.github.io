@@ -1,0 +1,30 @@
+<link rel="stylesheet" type="text/css" href="contact/contact.css">
+
+<div class="container">
+  <h1>Contact Me:</h1>
+
+  <form name="contactForm" ng-controller="MessageController as msgCtrl" ng-submit="msgCtrl.send()">
+    <div class="container-fluid">
+      <div class="col-md-6">
+        <label>Name:</label>
+        <input type="text" placeholder="Your name" required style="width:25em;" ng-model="msgCtrl.message.name"/>
+      </div>
+      <div class="col-md-6">
+        <label>Organization:</label>
+        <input type="text" placeholder="Your organization (Optional)" style="width:25em;" ng-model="msgCtrl.message.organization" />
+      </div>
+      <div class="col-md-12">
+        <label>Email:</label>
+        <input type="email" placeholder="Your email" required style="width:25em;" ng-model="msgCtrl.message.email"/>
+      </div>
+      <div class="col-md-12">
+        <label>Message:</label>
+        <textarea ng-model="msgCtrl.message.body" required></textarea>
+      </div>
+      <div class="col-md-12">
+        <input id="submit" type="submit" value="Send"/>
+      </div>
+    </div>
+
+  </form>
+</div>
