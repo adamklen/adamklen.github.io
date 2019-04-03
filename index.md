@@ -5,5 +5,7 @@ This is a summary and showcase of the features I implemented for my final Introd
 
 When a ray intersects with a reflective surface, we bounce the ray off such that the incident angle to the normal is equal to the reflected angle. Certain materials may also reflect some colours more effectively than others.
 
-<img src="assets/reflection.png" width="300px"/>
+<a href="assets/reflection.png">
+  <img src="assets/reflection.png" width="300px"/>
+</a>
 
