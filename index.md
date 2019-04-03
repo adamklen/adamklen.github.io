@@ -33,11 +33,14 @@ Refraction is more complex since it has both a reflected and transmitted compone
 No real-world material is perfectly smooth and reflective like we simulated above. Instead, tiny imperfections in an object's surface cause light rays to bounce in slightly different directions from the ideal. By slightly perturbing reflected rays about the exact angle of reflectance, we get a glossy effect. Changing the degree by which rays are perturbed affects how smooth the object looks.
 
 <p align="center">
+  <a href="assets/reflection.png">
+  <img src="assets/reflection.png" width="200px"/>
+</a>
 <a href="assets/glossy_reflection.png">
-  <img src="assets/glossy_reflection.png" width="300px"/>
+  <img src="assets/glossy_reflection.png" width="200px"/>
 </a>
 <a href="assets/glossy_reflection2.png">
-  <img src="assets/glossy_reflection2.png" width="300px"/>
+  <img src="assets/glossy_reflection2.png" width="200px"/>
 </a>
 </p>
 
@@ -46,6 +49,9 @@ No real-world material is perfectly smooth and reflective like we simulated abov
 Similarly to glossy reflection, we can slightly perturb our rays when calculating refraction to give a glossy appearance. A slight difference is that we instead change the normal that we use to find the angles of the reflected and transmitted rays.
 
 <p align="center">
+  <a href="assets/refraction_133.png">
+  <img src="assets/refraction_133.png" width="300px"/>
+</a>
 <a href="assets/incoherent_transmission.png">
   <img src="assets/incoherent_transmission.png" width="300px"/>
 </a>
@@ -120,16 +126,6 @@ Every time we send out a ray to collide with our scene, we run through the entir
 </a>
 </p>
 
-## Final scene
-
-Below is my final scene. It uses refraction, reflection, texture mapping, soft shadows, adaptive antialiasing, and Phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
-
-<p align="center">
-<a href="assets/final_scene.png">
-  <img src="assets/final_scene.png" width="100%"/>
-</a>
-</p>
-
 ## Bonus objective: Phong shading
 
 We can give meshes a much smoother appearance without adding exponentially more polygons through Phong shading. In the mesh, we assign a normal vector to each vertex. Then, when the ray intersects with a face, we find the normal at that point by interpolating the three vertex normals. The two images below demonstrate the difference.
@@ -140,6 +136,16 @@ We can give meshes a much smoother appearance without adding exponentially more 
 </a>
 <a href="assets/phong_shading.png">
   <img src="assets/phong_shading.png" width="300px"/>
+</a>
+</p>
+
+## Final scene
+
+Below is my final scene. It uses refraction, reflection, texture mapping, soft shadows, adaptive antialiasing, and Phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
+
+<p align="center">
+<a href="assets/final_scene.png">
+  <img src="assets/final_scene.png" width="100%"/>
 </a>
 </p>
 
