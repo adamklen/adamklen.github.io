@@ -47,6 +47,8 @@ TODO glossy refraction comparision
 
 We use a process called UV mapping to convert any 3D point on an object to a coordinate in 2D space between (0,0) and (1,1). When a ray intersects with an object, we can use this to look up values in an image (raster) file that contains a height map (kind of like a topological map). We use derivatives of the height map to find the slope in the u and v directions and use that to displace the normal of the object. This lets us make objects that appear to have bumps or grooves in them.
 
+TODO get bigger images
+
 <a href="assets/bump_map1.png">
   <img src="assets/bump_map1.png" width="300px"/>
 </a>
@@ -104,12 +106,11 @@ Every time we send out a ray to collide with our scene, we run through the entir
 
 ## Final scene
 
-Below is my final scene. It uses refraction, reflection, texture mapping, adaptive antialiasing, and phong shading. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
+Below is my final scene. It uses refraction, reflection, texture mapping, adaptive antialiasing, and phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
 
 <a href="assets/final_scene.png">
-  <img src="assets/final_scene.png" width="300px"/>
+  <img src="assets/final_scene.png" width="100%"/>
 </a>
-
 
 ## Bonus objective: Phong shading
 
