@@ -71,7 +71,9 @@ TODO get bigger images
 
 ## Texture mapping
 
-We can reuse the UV mapping strategy above to look up the colour of an object at any given point. This lets us "wrap" images around our 3D models, adding lots of detail and visual appeal for relatively low cost.
+We can reuse the UV mapping strategy above to look up the colour of an object at any given point. This lets us "wrap" images around our 3D models, adding lots of detail and visual appeal for relatively little cost.
+
+TODO center apple better
 
 <p align="center">
 <a href="assets/texture_map.png">
