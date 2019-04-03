@@ -3,7 +3,7 @@ This is a summary and showcase of the features I implemented for my final Introd
 
 ## Reflection
 
-When a ray intersects with a reflective surface, we bounce the ray off such that the incident angle to the normal is equal to the reflected angle. We can give reflective objects a coloured (e.g. shiny gold) by adjusting how well the material reflects different colours.
+When a ray intersects with a reflective surface, we bounce the ray off such that the incident angle to the normal is equal to the reflected angle. We can give reflective objects a coloured look (e.g. shiny gold) by adjusting how well the material reflects different colours.
 
 <p align="center">
 <a href="assets/reflection.png">
@@ -16,7 +16,7 @@ When a ray intersects with a reflective surface, we bounce the ray off such that
 
 ## Refraction
 
-Refraction is more interesting since it has both a reflected and transmitted component to it. The degree to which light is slowed down when traveling through a material is its index of refraction. The angle that a ray is transmitted at through the material is related to the difference in the index of refraction between it and the surrounding air. We can use something called the Schlick approximation to estimate what proportion of light is reflected vs. transmitted when a ray intersects a refractive material. In general, the shallower the angle between the ray and the surface, the more it's reflected. The two images show refraction with index 1.01 and 1.33, respectively.
+Refraction is more complex since it has both a reflected and transmitted component to it. The degree to which light is slowed down when traveling through a material is its index of refraction. The angle that a ray is transmitted at through the material is related to the difference in the index of refraction between it and the surrounding air. We can use something called the Schlick approximation to estimate what proportion of light is reflected vs. transmitted when a ray intersects a refractive material. In general, the shallower the angle between the ray and the surface, the more it's reflected. The two images show refraction with index 1.01 and 1.33, respectively.
 
 <p align="center">
 <a href="assets/refraction_101.png">
@@ -89,7 +89,7 @@ Up until now, all of our objects have cast hard, precise, and pretty unrealistic
 
 ## Adaptive antialiasing
 
-Sending out one ray per pixel renders images with very hard edges and jagged lines (called aliasing). We can mitigate this by sending out multiple rays per pixel in slightly different directions and averaging the results. However, this is pretty expensive and there is a lot of time wasted on regions of the scene where not a lot is going on. Many scenes have decent amounts of flat walls or empty space that doesn't result in aliasing. What we can instead to is use a technique to identify which parts need to be supersamples. My impementation does a second pass over the image and find pixels that vary in colour from at least one neighbour by some minimum threshold. These pixels are then supersampled as normal.
+Sending out one ray per pixel renders images with very hard edges and jagged lines (called aliasing). We can mitigate this by sending out multiple rays per pixel in slightly different directions and averaging the results. However, this is pretty expensive and there is a lot of time wasted on regions of the scene where not a lot is going on. Many scenes have plenty of flat walls or empty space that don't result in aliasing. What we can instead do is use a technique to identify which parts need to be supersampled. My impementation does a second pass over the image and finds pixels that vary in colour from at least one neighbour by some minimum threshold. These pixels are then stochastically supersampled. Samples are chosen by making small random deltas from a uniform grid across the pixel.
 
 <p align="center">
 <a href="assets/without_aa.png">
@@ -105,9 +105,10 @@ Sending out one ray per pixel renders images with very hard edges and jagged lin
 
 ## Grid spatial partitioning
 
-Every time we send out a ray to collide with our scene, we run through the entire hierarchy of nodes and test each individually if our ray intersects with it. For scenes with a large number of objects that are widely spaced out, this is a very inefficient strategy. What we can instead do is divide the scene up into equal-sized cells. For each cell, we store which objects are at least partially inside it. This lets us find which cells our ray will pass through, which is relatively cheap to do, and only intersect with objects contained in those cells. Rendering the below array of reflective spheres was over 5x faster with this strategy (on my 8 core laptop).
+Every time we send out a ray to collide with our scene, we run through the entire hierarchy of nodes and test each individually to see if our ray intersects with it. For scenes with a large number of objects that are widely spaced out, this is a very inefficient strategy. What we can instead do is divide the scene up into equal-sized cells. For each cell, we store which objects are at least partially inside it. This lets us find which cells our ray will pass through, which is relatively cheap to do, and only intersect with objects contained in those cells. Rendering the below array of reflective spheres was over 5x faster with this strategy (on my 8 core laptop).
 
 <p align="center">
+  
 |             | Metric       | Time (s)
 | ----------- | ------------ | -----------:
 |Without grid | Real time    | 406
@@ -122,7 +123,7 @@ Every time we send out a ray to collide with our scene, we run through the entir
 
 ## Final scene
 
-Below is my final scene. It uses refraction, reflection, texture mapping, soft shadows, adaptive antialiasing, and phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
+Below is my final scene. It uses refraction, reflection, texture mapping, soft shadows, adaptive antialiasing, and Phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
 
 <p align="center">
 <a href="assets/final_scene.png">
