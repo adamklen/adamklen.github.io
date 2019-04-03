@@ -3,13 +3,14 @@ This is a summary and showcase of the features I implemented for my final Introd
 
 ## Reflection
 
-When a ray intersects with a reflective surface, we bounce the ray off such that the incident angle to the normal is equal to the reflected angle.
-
-TODO coloured reflection
+When a ray intersects with a reflective surface, we bounce the ray off such that the incident angle to the normal is equal to the reflected angle. We can give reflective objects a coloured (e.g. shiny gold) by adjusting how well the material reflects different colours.
 
 <p align="center">
 <a href="assets/reflection.png">
   <img src="assets/reflection.png" width="300px"/>
+</a>
+<a href="assets/reflection_coloured.png">
+  <img src="assets/reflection_coloured.png" width="300px"/>
 </a>
 </p>
 
@@ -31,19 +32,18 @@ Refraction is more interesting since it has both a reflected and transmitted com
 
 No real-world material is perfectly smooth and reflective like we simulated above. Instead, tiny imperfections in an object's surface cause light rays to bounce in slightly different directions from the ideal. By slightly perturbing reflected rays about the exact angle of reflectance, we get a glossy effect. Changing the degree by which rays are perturbed affects how smooth the object looks.
 
-TODO glossy reflection comparison
-
 <p align="center">
 <a href="assets/glossy_reflection.png">
   <img src="assets/glossy_reflection.png" width="300px"/>
+</a>
+<a href="assets/glossy_reflection2.png">
+  <img src="assets/glossy_reflection2.png" width="300px"/>
 </a>
 </p>
 
 ## Incoherent (glossy) transmission
 
 Similarly to glossy reflection, we can slightly perturb our rays when calculating refraction to give a glossy appearance. A slight difference is that we instead change the normal that we use to find the angles of the reflected and transmitted rays.
-
-TODO glossy refraction comparision
 
 <p align="center">
 <a href="assets/incoherent_transmission.png">
@@ -54,8 +54,6 @@ TODO glossy refraction comparision
 ## Bump mapping
 
 We use a process called UV mapping to convert any 3D point on an object to a coordinate in 2D space between (0,0) and (1,1). When a ray intersects with an object, we can use this to look up values in an image (raster) file that contains a height map (kind of like a topological map). We use derivatives of the height map to find the slope in the u and v directions and use that to displace the normal of the object. This lets us make objects that appear to have bumps or grooves in them.
-
-TODO get bigger images
 
 <p align="center">
 <a href="assets/bump_map1.png">
@@ -72,8 +70,6 @@ TODO get bigger images
 ## Texture mapping
 
 We can reuse the UV mapping strategy above to look up the colour of an object at any given point. This lets us "wrap" images around our 3D models, adding lots of detail and visual appeal for relatively little cost.
-
-TODO center apple better
 
 <p align="center">
 <a href="assets/texture_map.png">
@@ -111,6 +107,7 @@ Sending out one ray per pixel renders images with very hard edges and jagged lin
 
 Every time we send out a ray to collide with our scene, we run through the entire hierarchy of nodes and test each individually if our ray intersects with it. For scenes with a large number of objects that are widely spaced out, this is a very inefficient strategy. What we can instead do is divide the scene up into equal-sized cells. For each cell, we store which objects are at least partially inside it. This lets us find which cells our ray will pass through, which is relatively cheap to do, and only intersect with objects contained in those cells. Rendering the below array of reflective spheres was over 5x faster with this strategy (on my 8 core laptop).
 
+<p align="center">
 |             | Metric       | Time (s)
 | ----------- | ------------ | -----------:
 |Without grid | Real time    | 406
@@ -118,7 +115,6 @@ Every time we send out a ray to collide with our scene, we run through the entir
 |With grid    | Real time    | 71
 |             | User time    | 558
 
-<p align="center">
 <a href="assets/reflect_grid.png">
   <img src="assets/reflect_grid.png" width="300px"/>
 </a>
@@ -126,7 +122,7 @@ Every time we send out a ray to collide with our scene, we run through the entir
 
 ## Final scene
 
-Below is my final scene. It uses refraction, reflection, texture mapping, adaptive antialiasing, and phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
+Below is my final scene. It uses refraction, reflection, texture mapping, soft shadows, adaptive antialiasing, and phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
 
 <p align="center">
 <a href="assets/final_scene.png">
@@ -136,9 +132,16 @@ Below is my final scene. It uses refraction, reflection, texture mapping, adapti
 
 ## Bonus objective: Phong shading
 
-We can give meshes a much smoother appearance without adding exponentially more polygons by employing Phong shading. In the mesh, we assign a normal vector to each vertex. Then, when the ray intersects with a face, we find the normal at that point by interpolating between the three vertex normals. The two images below demonstrate the difference.
+We can give meshes a much smoother appearance without adding exponentially more polygons through Phong shading. In the mesh, we assign a normal vector to each vertex. Then, when the ray intersects with a face, we find the normal at that point by interpolating the three vertex normals. The two images below demonstrate the difference.
 
-TODO Phong shading images
+<p align="center">
+<a href="assets/flat_shading.png">
+  <img src="assets/flat_shading.png" width="300px"/>
+</a>
+<a href="assets/phong_shading.png">
+  <img src="assets/phong_shading.png" width="300px"/>
+</a>
+</p>
 
 ## I didn't render this
 
