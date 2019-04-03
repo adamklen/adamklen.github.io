@@ -7,14 +7,17 @@ When a ray intersects with a reflective surface, we bounce the ray off such that
 
 TODO coloured reflection
 
+<p align="center">
 <a href="assets/reflection.png">
   <img src="assets/reflection.png" width="300px"/>
 </a>
+</p>
 
 ## Refraction
 
 Refraction is more interesting since it has both a reflected and transmitted component to it. The degree to which light is slowed down when traveling through a material is its index of refraction. The angle that a ray is transmitted at through the material is related to the difference in the index of refraction between it and the surrounding air. We can use something called the Schlick approximation to estimate what proportion of light is reflected vs. transmitted when a ray intersects a refractive material. In general, the shallower the angle between the ray and the surface, the more it's reflected. The two images show refraction with index 1.01 and 1.33, respectively.
 
+<p align="center">
 <a href="assets/refraction_101.png">
   <img src="assets/refraction_101.png" width="300px"/>
 </a>
@@ -22,6 +25,7 @@ Refraction is more interesting since it has both a reflected and transmitted com
 <a href="assets/refraction_133.png">
   <img src="assets/refraction_133.png" width="300px"/>
 </a>
+</p>
 
 ## Glossy reflection
 
@@ -29,9 +33,11 @@ No real-world material is perfectly smooth and reflective like we simulated abov
 
 TODO glossy reflection comparison
 
+<p align="center">
 <a href="assets/glossy_reflection.png">
   <img src="assets/glossy_reflection.png" width="300px"/>
 </a>
+</p>
 
 ## Incoherent (glossy) transmission
 
@@ -39,9 +45,11 @@ Similarly to glossy reflection, we can slightly perturb our rays when calculatin
 
 TODO glossy refraction comparision
 
+<p align="center">
 <a href="assets/incoherent_transmission.png">
   <img src="assets/incoherent_transmission.png" width="300px"/>
 </a>
+</p>
 
 ## Bump mapping
 
@@ -49,6 +57,7 @@ We use a process called UV mapping to convert any 3D point on an object to a coo
 
 TODO get bigger images
 
+<p align="center">
 <a href="assets/bump_map1.png">
   <img src="assets/bump_map1.png" width="300px"/>
 </a>
@@ -58,27 +67,33 @@ TODO get bigger images
 <a href="assets/bump_map3.png">
   <img src="assets/bump_map3.png" width="300px"/>
 </a>
+</p>
 
 ## Texture mapping
 
 We can reuse the UV mapping strategy above to look up the colour of an object at any given point. This lets us "wrap" images around our 3D models, adding lots of detail and visual appeal for relatively low cost.
 
+<p align="center">
 <a href="assets/texture_map.png">
   <img src="assets/texture_map.png" width="300px"/>
 </a>
+</p>
 
 ## Soft shadows
 
 Up until now, all of our objects have cast hard, precise, and pretty unrealistic shadows. This is because our light sources so far have always been single points. To add softer, more realistic shadows, we can give our lights some radius and use a stochastic sampling technique (similar to glossy reflection) to randomly sample shadow rays across the surface of the light. Objects farther away from light sources then cast harder shadows than those close to light sources. In the below image, we can see that the umbra is largest relative to the penumbra in the rectangle closest to the light.
 
+<p align="center">
 <a href="assets/soft_shadows.png">
   <img src="assets/soft_shadows.png" width="300px"/>
 </a>
+</p>
 
 ## Adaptive antialiasing
 
 Sending out one ray per pixel renders images with very hard edges and jagged lines (called aliasing). We can mitigate this by sending out multiple rays per pixel in slightly different directions and averaging the results. However, this is pretty expensive and there is a lot of time wasted on regions of the scene where not a lot is going on. Many scenes have decent amounts of flat walls or empty space that doesn't result in aliasing. What we can instead to is use a technique to identify which parts need to be supersamples. My impementation does a second pass over the image and find pixels that vary in colour from at least one neighbour by some minimum threshold. These pixels are then supersampled as normal.
 
+<p align="center">
 <a href="assets/without_aa.png">
   <img src="assets/without_aa.png" width="300px"/>
 </a>
@@ -88,6 +103,7 @@ Sending out one ray per pixel renders images with very hard edges and jagged lin
 <a href="assets/with_aa_map.png">
   <img src="assets/with_aa_map.png" width="300px"/>
 </a>
+</p>
 
 ## Grid spatial partitioning
 
@@ -100,17 +116,21 @@ Every time we send out a ray to collide with our scene, we run through the entir
 |With grid    | Real time    | 71
 |             | User time    | 558
 
+<p align="center">
 <a href="assets/reflect_grid.png">
   <img src="assets/reflect_grid.png" width="300px"/>
 </a>
+</p>
 
 ## Final scene
 
 Below is my final scene. It uses refraction, reflection, texture mapping, adaptive antialiasing, and phong shading. The scene features some wooden puppets being mischievous inside of their box. The mug, pouring water, and puppet meshes were available free online (with the puppets posed by me via Blender).
 
+<p align="center">
 <a href="assets/final_scene.png">
   <img src="assets/final_scene.png" width="100%"/>
 </a>
+</p>
 
 ## Bonus objective: Phong shading
 
@@ -122,6 +142,8 @@ TODO Phong shading images
 
 Actually it's a photo. But it's a really good photo and it helped me get through some of these last stressful days. It also demonstrates motion blur, depth of field, subsurface scattering, and global illumination, some pretty cool things that I wish I had more time to look into.
 
+<p align="center">
 <a href="assets/hedgehog.jpg">
-  <img src="assets/hedgehog.jpg" width="300px"/>
+  <img src="assets/hedgehog.jpg" width="500px"/>
 </a>
+</p>
