@@ -107,16 +107,12 @@ Sending out one ray per pixel renders images with very hard edges and jagged lin
 
 Every time we send out a ray to collide with our scene, we run through the entire hierarchy of nodes and test each individually to see if our ray intersects with it. For scenes with a large number of objects that are widely spaced out, this is a very inefficient strategy. What we can instead do is divide the scene up into equal-sized cells. For each cell, we store which objects are at least partially inside it. This lets us find which cells our ray will pass through, which is relatively cheap to do, and only intersect with objects contained in those cells. Rendering the below array of reflective spheres was over 5x faster with this strategy (on my 8 core laptop).
 
-<center>
-  
 |             | Metric       | Time (s)
 | ----------- | ------------ | -----------:
 |Without grid | Real time    | 406
 |             | User time    | 3179
 |With grid    | Real time    | 71
 |             | User time    | 558
-
-</center>
 
 <p align="center">
 <a href="assets/reflect_grid.png">
