@@ -59,13 +59,13 @@ TODO get bigger images
 
 <p align="center">
 <a href="assets/bump_map1.png">
-  <img src="assets/bump_map1.png" width="300px"/>
+  <img src="assets/bump_map1.png" width="200px"/>
 </a>
 <a href="assets/bump_map2.png">
-  <img src="assets/bump_map2.png" width="300px"/>
+  <img src="assets/bump_map2.png" width="200px"/>
 </a>
 <a href="assets/bump_map3.png">
-  <img src="assets/bump_map3.png" width="300px"/>
+  <img src="assets/bump_map3.png" width="200px"/>
 </a>
 </p>
 
