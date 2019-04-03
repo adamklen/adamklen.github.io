@@ -85,7 +85,7 @@ We can reuse the UV mapping strategy above to look up the colour of an object at
 
 ## Soft shadows
 
-Up until now, all of our objects have cast hard, precise, and pretty unrealistic shadows. This is because our light sources so far have always been single points. To add softer, more realistic shadows, we can give our lights some radius and use a stochastic sampling technique (similar to glossy reflection) to randomly sample shadow rays across the surface of the light. Objects farther away from light sources then cast harder shadows than those close to light sources. In the below image, we can see that the umbra is largest relative to the penumbra in the rectangle closest to the light.
+Up until now, all of our objects have cast hard, precise, and pretty unrealistic shadows. This is because our light sources so far have always been single points. To add softer, more realistic shadows, we can give our lights some radius and use a stochastic sampling technique (similar to glossy reflection) to randomly sample shadow rays across the surface of the light. Objects farther away from light sources then cast harder shadows than those close to light sources. In the below image, we can see that the box closest to the light has the largest relative penumbra.
 
 <p align="center">
 <a href="assets/soft_shadows.png">
